@@ -55,7 +55,7 @@ export function FaqSection() {
           ))}
         </Accordion>
         
-        <div className="mt-12 text-center bg-[#0A2342] rounded-lg p-8 shadow-lg">
+        <div className="mt-12 text-center bg-[#0A4223] rounded-lg p-8 shadow-lg">
           <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Still have questions?</h3>
           <p className="text-gray-300 mb-6">
             Our team is ready to help you with any other questions you might have about our courses.
