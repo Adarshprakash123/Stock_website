@@ -26,10 +26,10 @@ export function MasterclassSection() {
   }
 
   return (
-    <section id="masterclass" className="py-20 bg-gradient-to-b from-[#0A2342] to-[#13315C]">
+    <section id="masterclass" className="py-20 bg-[#0A4223]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <Badge className="mb-3 bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">Live Masterclass</Badge>
+          <Badge className="mb-3 bg-green-500/20 text-green-300 hover:bg-green-500/30">Live Masterclass</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">2-Hour Trading Masterclass</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Join our intensive masterclass to learn proven trading strategies from industry experts.
@@ -42,8 +42,8 @@ export function MasterclassSection() {
             
             <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
-                <div className="bg-blue-500/20 rounded-full p-2 mt-1">
-                  <CheckCircle className="h-5 w-5 text-blue-400" />
+                <div className="bg-green-500/20 rounded-full p-2 mt-1">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">Market Analysis Techniques</h4>
@@ -52,8 +52,8 @@ export function MasterclassSection() {
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="bg-blue-500/20 rounded-full p-2 mt-1">
-                  <CheckCircle className="h-5 w-5 text-blue-400" />
+                <div className="bg-green-500/20 rounded-full p-2 mt-1">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">Risk Management</h4>
@@ -62,8 +62,8 @@ export function MasterclassSection() {
               </div>
               
               <div className="flex items-start gap-4">
-                <div className="bg-blue-500/20 rounded-full p-2 mt-1">
-                  <CheckCircle className="h-5 w-5 text-blue-400" />
+                <div className="bg-green-500/20 rounded-full p-2 mt-1">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">Live Trading Demo</h4>
@@ -74,13 +74,13 @@ export function MasterclassSection() {
 
             <div className="flex flex-col sm:flex-row gap-6 text-center">
               <div className="flex-1 bg-white/5 rounded-lg p-4">
-                <Clock className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                <Clock className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <h4 className="font-semibold text-white">Duration</h4>
                 <p className="text-gray-300">2 Hours</p>
               </div>
               
               <div className="flex-1 bg-white/5 rounded-lg p-4">
-                <Users className="h-6 w-6 text-blue-400 mx-auto mb-2" />
+                <Users className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <h4 className="font-semibold text-white">Batch Size</h4>
                 <p className="text-gray-300">Limited Seats</p>
               </div>
@@ -88,7 +88,7 @@ export function MasterclassSection() {
           </Card>
 
           <Card className="p-8 bg-white">
-            <h3 className="text-2xl font-bold text-[#0A2342] mb-6">Register Now</h3>
+            <h3 className="text-2xl font-bold text-[#0A4223] mb-6">Register Now</h3>
             <p className="text-gray-600 mb-6">
               Secure your spot in our upcoming masterclass. After registration, you'll be added to our exclusive WhatsApp group.
             </p>
@@ -151,7 +151,7 @@ export function MasterclassSection() {
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-[#0A2342] hover:bg-[#0D2E5A] text-white">
+              <Button type="submit" className="w-full bg-[#0A4223] hover:bg-[#0d5a37] text-white">
                 Proceed to Payment
               </Button>
 

@@ -12,7 +12,7 @@ const courses = [
     image: "https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     price: "$299",
     duration: "8 weeks",
-    studentsCount: "3,500+",
+    studentsCount: "2,500+",
     popular: true,
     features: ["Live Trading Sessions", "Market Analysis", "Risk Management", "Portfolio Building"]
   },
@@ -99,7 +99,7 @@ export function CoursesSection() {
               
               <CardFooter className="flex items-center justify-between border-t pt-4">
                 <span className="text-lg font-bold text-[#0A2342]">{course.price}</span>
-                <Button size="sm" className="bg-[#0A2342] hover:bg-[#0D2E5A]">
+                <Button size="sm" className="bg-[#0A4223] hover:bg-[#0D2E5A]">
                   Learn More
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

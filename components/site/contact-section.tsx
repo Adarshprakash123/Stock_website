@@ -53,7 +53,7 @@ export function ContactSection() {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
           <div>
-            <div className="bg-[#0A2342] rounded-lg p-8 text-white shadow-lg">
+            <div className="bg-[#0A4223] rounded-lg p-8 text-white shadow-lg">
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
               
               <div className="space-y-6">
@@ -180,7 +180,7 @@ export function ContactSection() {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-[#0A2342] hover:bg-[#0D2E5A]"
+                  className="w-full bg-[#0A4223] hover:bg-[#0D2E5A]"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

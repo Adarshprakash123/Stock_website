@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Menu, X, ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const menuItems = [
   { title: "Home", href: "/" },
@@ -15,24 +16,19 @@ const menuItems = [
   { title: "FAQ", href: "#faq" },
   { title: "Contact", href: "#contact" },
   { title: "Masterclass", href: "#masterclass" },
-]
+];
 
 export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
@@ -44,10 +40,17 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-            TradePro
-          </span>
+        {/* Logo */}
+        <Link href="/" className="flex items-center  text-2xl font-bold text-green-600">
+          {/* <Image
+            src="/mainlogo.PNG" // ✅ public/mainlogo.PNG
+            alt="Logo"
+            width={50}
+            height={50}
+            className="object-contain h-auto"
+            priority
+          /> */}
+          Trading<span className="text-2xl font-bold text-yellow-500">Walla</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -57,14 +60,14 @@ export function Header() {
               key={item.title}
               href={item.href}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary",
+                "text-base font-medium transition-colors hover:text-primary",
                 scrolled ? "text-gray-700" : "text-gray-100"
               )}
             >
               {item.title}
             </Link>
           ))}
-          <Button size="sm" className="ml-4">
+          <Button size="sm" className="ml-4 bg-yellow-600">
             Get Started
           </Button>
         </nav>
@@ -97,10 +100,10 @@ export function Header() {
                 {item.title}
               </Link>
             ))}
-            <Button className="mt-2">Get Started</Button>
+            <Button className="mt-2 text-white bg-green-500">Get Started</Button>
           </nav>
         </div>
       )}
     </header>
-  )
+  );
 }

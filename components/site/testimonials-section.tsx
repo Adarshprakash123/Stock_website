@@ -32,10 +32,10 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-20 bg-[#0A2342] text-white">
+    <section id="testimonials" className="py-20 bg-[#0A4223] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <Badge className="mb-3 bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 border-blue-500/50">Testimonials</Badge>
+          <Badge className="mb-3 bg-green-500/20 text-green-300 hover:bg-green/30 border-green-500/50">Testimonials</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories From Our Students</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             Hear from traders who have transformed their financial futures with our educational programs.
@@ -87,7 +87,7 @@ export function TestimonialsSection() {
               </p>
               
               {/* Decorative element */}
-              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-30"></div>
             </div>
           ))}
         </div>

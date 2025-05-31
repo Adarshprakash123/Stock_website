@@ -6,7 +6,9 @@ export function HeroSection() {
   return (
     <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A2342] to-[#13315C] z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B3D2E] via-[#0A5730] to-[#0F6B38] z-0"
+
+></div>
       
       {/* Overlay pattern */}
       <div 
@@ -33,7 +35,7 @@ export function HeroSection() {
                 Explore Courses
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="text-black hover:text-white border-white hover:bg-white/10">
                 Free Webinar
               </Button>
             </div>
@@ -66,7 +68,7 @@ export function HeroSection() {
             </div>
             
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#E6AF2E] rounded-full opacity-50 blur-lg"></div>
+            <div className="absolute -bottom-6 -left-24 w-24 h-24 bg-[#E6AF2E] rounded-full opacity-50 blur-lg"></div>
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-600 rounded-full opacity-30 blur-lg"></div>
           </div>
         </div>
