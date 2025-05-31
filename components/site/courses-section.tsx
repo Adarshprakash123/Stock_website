@@ -12,7 +12,7 @@ const courses = [
     image: "https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     price: "$299",
     duration: "8 weeks",
-    studentsCount: "2,500+",
+    studentsCount: "3,500+",
     popular: true,
     features: ["Live Trading Sessions", "Market Analysis", "Risk Management", "Portfolio Building"]
   },
