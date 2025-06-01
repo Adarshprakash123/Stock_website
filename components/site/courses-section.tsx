@@ -3,40 +3,42 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Clock, CheckCircle, BookOpen, Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Video } from 'lucide-react';
+
 
 const courses = [
   {
     id: 1,
-    title: "Stock Market Fundamentals",
-    description: "Master the basics of stock market investing and build a solid foundation for your trading journey.",
+    title: "Recorded Course Only",
+    // description: "Master the basics of stock market investing and build a solid foundation for your trading journey.",
     image: "https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    price: "$299",
-    duration: "8 weeks",
-    studentsCount: "2,500+",
+    price: "Rs 5999",
+    duration: "16 weeks",
+    studentsCount: "1000",
     popular: true,
-    features: ["Live Trading Sessions", "Market Analysis", "Risk Management", "Portfolio Building"]
+    features: ["Pre-recorded Classes", "Live Trading Support (3 times/week, 12:00–2:00 PM)", " No Offline Access", "No Live Online Class Access"]
   },
   {
     id: 2,
-    title: "Technical Analysis Mastery",
-    description: "Learn how to read charts, identify patterns and make profitable trading decisions based on technical indicators.",
+    title: "Online Live Class",
+    // description: "Learn how to read charts, identify patterns and make profitable trading decisions based on technical indicators.",
     image: "https://images.pexels.com/photos/6770609/pexels-photo-6770609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    price: "$399",
-    duration: "10 weeks",
+    price: "Rs 8999",
+    duration: "Lifetime access",
     studentsCount: "1,800+",
     popular: false,
-    features: ["Pattern Recognition", "Indicator Strategies", "Price Action", "Chart Analysis"]
+    features: ["Live Online Classes (Monday to Friday, 5:30–7:30 PM)", "Live Trading Support (12:00–2:00 PM via Zoom, Lifetime access)", "Live Q&A & Doubt Sessions"]
   },
   {
     id: 3,
-    title: "Options Trading Strategies",
-    description: "Discover powerful options trading strategies to generate consistent income and manage risk effectively.",
+    title: "Offline Master Class",
+    // description: "Discover powerful options trading strategies to generate consistent income and manage risk effectively.",
     image: "https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    price: "$499",
+    price: "Rs 19999",
     duration: "12 weeks",
     studentsCount: "1,200+",
     popular: true,
-    features: ["Options Fundamentals", "Income Strategies", "Spread Trading", "Volatility Trading"]
+    features: ["Offline Class (Monday to Friday, 5:30–7:30 PM)", "Includes Online Class Access", "Spread Trading", "Lifetime Access to Online Community Group"]
   }
 ]
 
@@ -74,7 +76,7 @@ export function CoursesSection() {
               </CardHeader>
               
               <CardContent>
-                <p className="text-gray-600 mb-4">{course.description}</p>
+                {/* <p className="text-gray-600 mb-4">{course.description}</p> */}
                 
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
@@ -99,7 +101,7 @@ export function CoursesSection() {
               
               <CardFooter className="flex items-center justify-between border-t pt-4">
                 <span className="text-lg font-bold text-[#0A2342]">{course.price}</span>
-                <Button size="sm" className="bg-[#0A4223] hover:bg-[#0D2E5A]">
+                <Button size="sm" className="bg-[#0A4223] hover:bg-[#b0b51e]">
                   Learn More
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

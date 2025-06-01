@@ -60,7 +60,7 @@ export function Header() {
               key={item.title}
               href={item.href}
               className={cn(
-                "text-base font-medium transition-colors hover:text-primary",
+                "text-base font-medium transition-colors hover:text-yellow-500",
                 scrolled ? "text-gray-700" : "text-gray-100"
               )}
             >
@@ -94,7 +94,7 @@ export function Header() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="text-gray-700 py-2 font-medium hover:text-primary"
+                className="text-gray-700 py-2 font-medium hover:text-yellow-600"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.title}

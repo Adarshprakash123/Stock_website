@@ -21,14 +21,14 @@ export function HeroSection() {
         }}
       ></div>
       
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
               Master The Markets with <span className="text-[#E6AF2E]">Confidence</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
-              Professional trading education that transforms beginners into skilled market experts. Join thousands of successful traders today.
+            <p className="max-w-prose text-white text-base leading-relaxed tracking-wide text-justify border-l-4 border-[#E6AF2E] pl-4  rounded-md shadow-sm mb-6">
+              Learn how the stock market really works — from someone who’s been there. Our practical, no-fluff training helps beginners grow into confident traders. Over 2,250 students have already taken the leap. Ready to join them?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button size="lg" className="bg-[#E6AF2E] hover:bg-[#D4A429] text-[#0A2342]">
