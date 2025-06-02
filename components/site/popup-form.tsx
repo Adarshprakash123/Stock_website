@@ -1,62 +1,95 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { X } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import { X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 export function PopupForm() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     interest: "",
-  })
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 5000)
-
-    return () => clearTimeout(timer)
-  }, [])
+      setIsOpen(true);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleClose = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" })); // reset error
+  };
 
   const handleSelectChange = (value: string) => {
-    setFormData((prev) => ({ ...prev, interest: value }))
-  }
+    setFormData((prev) => ({ ...prev, interest: value }));
+    setErrors((prev) => ({ ...prev, interest: "" }));
+  };
+
+  const validate = () => {
+    const newErrors: { [key: string]: string } = {};
+    const nameRegex = /^[a-zA-Z\s]{3,50}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^(\+91[\-\s]?)?[0]?(91)?[789]\d{9}$/;
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Name must be 3-50 letters only";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Invalid Indian phone number format";
+    }
+
+    if (!formData.interest) {
+      newErrors.interest = "Please select an interest";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    console.log("Submitted Data:", formData);
 
     setTimeout(() => {
-      setIsSubmitted(true)
+      setIsSubmitted(true);
+      setTimeout(() => setIsOpen(false), 3000);
+    }, 1000);
+  };
 
-      setTimeout(() => {
-        setIsOpen(false)
-      }, 3000)
-    }, 1000)
-  }
-
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -86,18 +119,11 @@ export function PopupForm() {
             <div className="text-center py-8">
               <div className="bg-green-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
                 <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <h4 className="text-lg font-semibold text-gray-900 mb-2">Thank You!</h4>
-              <p className="text-gray-600">
-                Your free trading guide has been sent to your email.
-              </p>
+              <p className="text-gray-600">Your free trading guide has been sent to your email.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -110,9 +136,10 @@ export function PopupForm() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
+                  placeholder="Enter Your Name"
                   required
                 />
+                {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
               </div>
 
               <div>
@@ -125,9 +152,10 @@ export function PopupForm() {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
+                  placeholder="Enter Your Email"
                   required
                 />
+                {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
               </div>
 
               <div>
@@ -139,8 +167,9 @@ export function PopupForm() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+91 00000 00000"
                 />
+                {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
               </div>
 
               <div>
@@ -152,13 +181,12 @@ export function PopupForm() {
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="stocks">Stock Trading</SelectItem>
-                    <SelectItem value="options">Options Trading</SelectItem>
-                    <SelectItem value="futures">Futures Trading</SelectItem>
-                    <SelectItem value="forex">Forex Trading</SelectItem>
-                    <SelectItem value="crypto">Cryptocurrency</SelectItem>
+                    <SelectItem value="stocks">Recording Class</SelectItem>
+                    <SelectItem value="options">Online Class</SelectItem>
+                    <SelectItem value="futures">Offline Mentorship</SelectItem>
                   </SelectContent>
                 </Select>
+                {errors.interest && <p className="text-xs text-red-600 mt-1">{errors.interest}</p>}
               </div>
 
               <Button
@@ -176,5 +204,5 @@ export function PopupForm() {
         </div>
       </div>
     </div>
-  )
+  );
 }
