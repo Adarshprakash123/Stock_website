@@ -16,6 +16,8 @@ import { cn } from "@/lib/utils";
 export function PopupForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [formData, setFormData] = useState({
     name: "",
@@ -76,17 +78,50 @@ export function PopupForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
+    setIsSubmitting(true);
 
-    if (!validate()) return;
+    if (!validate()) {
+      setIsSubmitting(false);
+      return;
+    }
 
-    console.log("Submitted Data:", formData);
+    try {
+      const response = await fetch("/api/forms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType: "popup",
+        }),
+      });
 
-    setTimeout(() => {
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      if (!data.success) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
       setIsSubmitted(true);
       setTimeout(() => setIsOpen(false), 3000);
-    }, 1000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Failed to submit form. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -108,9 +143,12 @@ export function PopupForm() {
         </button>
 
         <div className="bg-gradient-to-b from-[#0B3D2E] via-[#0A5730] to-[#0F6B38] text-white p-6">
-          <h3 className="text-xl font-bold mb-2">Get Your Free Trading Guide</h3>
+          <h3 className="text-xl font-bold mb-2">
+            Get Your Free Trading Guide
+          </h3>
           <p className="text-gray-200 text-sm">
-            Sign up to receive our comprehensive e-book on "7 Proven Strategies for Consistent Trading Profits"
+            Sign up to receive our comprehensive e-book on "7 Proven Strategies
+            for Consistent Trading Profits"
           </p>
         </div>
 
@@ -118,17 +156,40 @@ export function PopupForm() {
           {isSubmitted ? (
             <div className="text-center py-8">
               <div className="bg-green-100 rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4">
-                <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="h-8 w-8 text-green-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Thank You!</h4>
-              <p className="text-gray-600">Your free trading guide has been sent to your email.</p>
+              <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                Thank You!
+              </h4>
+              <p className="text-gray-600">
+                Your free trading guide has been sent to your email.
+              </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {submitError && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                  <p className="text-sm text-red-600">{submitError}</p>
+                </div>
+              )}
+
               <div>
-                <label htmlFor="popup-name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="popup-name"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Your Name
                 </label>
                 <Input
@@ -139,11 +200,16 @@ export function PopupForm() {
                   placeholder="Enter Your Name"
                   required
                 />
-                {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name}</p>}
+                {errors.name && (
+                  <p className="text-xs text-red-600 mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="popup-email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="popup-email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Email Address
                 </label>
                 <Input
@@ -155,11 +221,16 @@ export function PopupForm() {
                   placeholder="Enter Your Email"
                   required
                 />
-                {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email}</p>}
+                {errors.email && (
+                  <p className="text-xs text-red-600 mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="popup-phone" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="popup-phone"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Phone Number (Optional)
                 </label>
                 <Input
@@ -169,14 +240,22 @@ export function PopupForm() {
                   onChange={handleChange}
                   placeholder="+91 00000 00000"
                 />
-                {errors.phone && <p className="text-xs text-red-600 mt-1">{errors.phone}</p>}
+                {errors.phone && (
+                  <p className="text-xs text-red-600 mt-1">{errors.phone}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="popup-interest" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="popup-interest"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   I'm Interested In
                 </label>
-                <Select onValueChange={handleSelectChange} value={formData.interest}>
+                <Select
+                  onValueChange={handleSelectChange}
+                  value={formData.interest}
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select an option" />
                   </SelectTrigger>
@@ -186,18 +265,29 @@ export function PopupForm() {
                     <SelectItem value="futures">Offline Mentorship</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.interest && <p className="text-xs text-red-600 mt-1">{errors.interest}</p>}
+                {errors.interest && (
+                  <p className="text-xs text-red-600 mt-1">{errors.interest}</p>
+                )}
               </div>
 
               <Button
                 type="submit"
                 className="w-full bg-[#E6AF2E] hover:bg-[#D4A429] text-[#0A2342]"
+                disabled={isSubmitting}
               >
-                Get Free Guide
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin mr-2 h-4 w-4 border-2 border-[#0A2342] border-opacity-50 border-t-transparent rounded-full"></div>
+                    Submitting...
+                  </div>
+                ) : (
+                  "Get Free Guide"
+                )}
               </Button>
 
               <p className="text-xs text-gray-500 text-center mt-4">
-                By submitting this form, you agree to our privacy policy and terms of service.
+                By submitting this form, you agree to our privacy policy and
+                terms of service.
               </p>
             </form>
           )}
