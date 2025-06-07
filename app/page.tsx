@@ -9,6 +9,7 @@ import { ContactSection } from "@/components/site/contact-section";
 import { PopupForm } from "@/components/site/popup-form";
 import { MasterclassSection } from "@/components/site/masterclass-section";
 
+ 
 export default function Home() {
   return (
     <main className="min-h-screen">
