@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 const testimonials = [
   {
     id: 1,
-    name: "Michael Chen",
+    name: "Rahul Singh",
     role: "Full-time Trader",
     content: "The technical analysis course completely transformed my trading approach. I went from struggling to identify profitable setups to consistently finding high-probability trades. Within three months, I was able to quit my day job and trade full-time.",
     image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -14,7 +14,7 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Sarah Johnson",
+    name: "Rakesh Kumar",
     role: "Part-time Investor",
     content: "As a working professional, I needed something flexible that could fit my schedule. TradePro's courses were perfect - I could learn at my own pace and the strategies were easy to implement even with limited time. My portfolio has grown 32% since completing the program.",
     image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -22,7 +22,7 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "David Rodriguez",
+    name: "Aman Singh",
     role: "Retired Finance Professional",
     content: "After 30 years in finance, I thought I knew everything about the markets. TradePro's options course proved me wrong. Their innovative strategies have helped me generate consistent monthly income to supplement my retirement.",
     image: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",

@@ -113,8 +113,8 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-200 mb-1">Email Us</h4>
-                    <p className="text-white">support@tradepro.com</p>
-                    <p className="text-white">info@tradepro.com</p>
+                    <p className="text-white">founder@tradingwalla.com</p>
+                    {/* <p className="text-white">info@tradepro.com</p> */}
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -123,7 +123,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-200 mb-1">Call Us</h4>
-                    <p className="text-white">+91 8294102602</p>
+                    <p className="text-white">+91 9289736744</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -133,7 +133,7 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium text-gray-200 mb-1">Visit Us</h4>
                     <p className="text-white">
-                      Sasaram (Rohtash), Bihar 821115<br />India
+                      Gali No-6, Gaurakshni, Sasaram, Rohtas, 821113 Bihar(India)
                     </p>
                   </div>
                 </div>
