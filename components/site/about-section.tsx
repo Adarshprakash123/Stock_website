@@ -20,7 +20,7 @@ export function AboutSection() {
               About Us
             </Badge>
             <h2 className="text-3xl md:text-3xl font-bold mb-6">
-              We Transform <span className="text-yellow-600">Beginners </span>   
+              We Transform <span className="text-yellow-600">Beginners </span>
               Into Skilled Traders
             </h2>
             <p className="max-w-prose text-gray-700 text-base leading-relaxed tracking-wide text-justify border-l-4 border-[#E6AF2E] pl-4 bg-yellow-50/40 rounded-md shadow-sm mb-6">
@@ -153,13 +153,12 @@ export function AboutSection() {
           {/* Image Section */}
           <div className="order-1 lg:order-2 relative">
             <div className="relative z-10">
-              <div className="relative rounded-lg overflow-hidden border-4 border-[#0A4223] shadow-2xl">
+              <div className="relative w-full h-[290px] sm:h-[340px] md:h-[440px] lg:h-[700px] xl:h-[640px] rounded-lg overflow-hidden border-4 border-[#0A4223] shadow-2xl">
                 <Image
-                  src="https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  src="/IMG2.JPG"
                   alt="Trading Expert"
-                  width={600}
-                  height={700}
-                  className="w-full h-[500px] object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
 
