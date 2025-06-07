@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { useFormSubmit } from "@/hooks/useFormSubmit";
 
 export function PopupForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ export function PopupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { handleSubmit, loading, error } = useFormSubmit();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -78,7 +80,7 @@ export function PopupForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError(null);
     setIsSubmitting(true);
@@ -89,38 +91,16 @@ export function PopupForm() {
     }
 
     try {
-      const response = await fetch("/api/forms", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          formType: "popup",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to submit form");
-      }
-
-      if (!data.success) {
-        throw new Error(data.error || "Failed to submit form");
-      }
-
+      console.log("Submitting form data:", formData);
+      await handleSubmit("brochure", formData);
       setIsSubmitted(true);
       setTimeout(() => setIsOpen(false), 3000);
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setSubmitError(
-        error instanceof Error
-          ? error.message
-          : "Failed to submit form. Please try again."
-      );
-    } finally {
-      setIsSubmitting(false);
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        submit: "Failed to submit form. Please try again.",
+      }));
     }
   };
 
@@ -178,13 +158,7 @@ export function PopupForm() {
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {submitError && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-                  <p className="text-sm text-red-600">{submitError}</p>
-                </div>
-              )}
-
+            <form onSubmit={onSubmit} className="space-y-4">
               <div>
                 <label
                   htmlFor="popup-name"
@@ -270,19 +244,16 @@ export function PopupForm() {
                 )}
               </div>
 
+              {errors.submit && (
+                <p className="text-xs text-red-600 mt-1">{errors.submit}</p>
+              )}
+
               <Button
                 type="submit"
                 className="w-full bg-[#E6AF2E] hover:bg-[#D4A429] text-[#0A2342]"
-                disabled={isSubmitting}
+                disabled={loading}
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center">
-                    <div className="animate-spin mr-2 h-4 w-4 border-2 border-[#0A2342] border-opacity-50 border-t-transparent rounded-full"></div>
-                    Submitting...
-                  </div>
-                ) : (
-                  "Get Free Guide"
-                )}
+                {loading ? "Submitting..." : "Get Free Guide"}
               </Button>
 
               <p className="text-xs text-gray-500 text-center mt-4">
