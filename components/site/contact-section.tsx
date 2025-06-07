@@ -258,7 +258,7 @@ export function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+91 0000000000"
+                    placeholder="+91 **********"
                     className="w-full"
                   />
                   {errors.phone && (
