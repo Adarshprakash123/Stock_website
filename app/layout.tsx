@@ -5,7 +5,6 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "TradingWalla - Master The Markets with Confidence",
