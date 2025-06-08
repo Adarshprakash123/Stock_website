@@ -69,7 +69,7 @@ export function HeroSection() {
           <div className="relative">
             <div className="relative z-10 rounded-lg overflow-hidden shadow-2xl">
               <Image
-                src="/IMG1.png"
+                src="/IMG1.webp"
                 alt="TradingWalla Professional"
                 width={500}
                 height={400}
