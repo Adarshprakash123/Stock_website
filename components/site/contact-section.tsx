@@ -151,21 +151,36 @@ export function ContactSection() {
                     <MapPin className="h-5 w-5 text-[#E6AF2E]" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-200 mb-1">Visit Us</h4>
+                    <h4 className="font-medium text-gray-200 mb-1">Visit Us Office adress</h4>
                     <p className="text-white">
-                      Sasaram (Rohtash), Bihar 821115
+                      Gali No 6, Gaurakshni, Sasaram , Rohtas, 821115
                       <br />
                       India
                     </p>
                   </div>
                 </div>
+                 
+                 <div className="flex items-start gap-4">
+                  <div className="bg-white/10 rounded-full p-3 mt-1">
+                    <MapPin className="h-5 w-5 text-[#E6AF2E]" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-200 mb-1">Company Registered Address</h4>
+                    <p className="text-white">
+                      Takiya , Ward No 2, Sasaram Rohtas , 821113
+                      <br />
+                      India
+                    </p>
+                  </div>
+                </div>
+
               </div>
-              <div className="mt-8 pt-8 border-t border-white/20">
+              {/* <div className="mt-8 pt-8 border-t border-white/20">
                 <h4 className="font-medium text-gray-200 mb-3">Office Hours</h4>
                 <p className="text-white">Monday - Friday: 9:00 AM - 6:00 PM</p>
                 <p className="text-white">Saturday: 10:00 AM - 2:00 PM</p>
                 <p className="text-white">Sunday: Closed</p>
-              </div>
+              </div> */}
             </div>
           </div>
 

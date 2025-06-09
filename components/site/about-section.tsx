@@ -1,35 +1,16 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  BadgeCheck,
-} from "lucide-react";
+import { BadgeCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export function AboutSection() {
   return (
     <section id="about" className="py-20 bg-white mx-4 sm:mx-6 md:mx-9">
       <div className="container mx-auto px-4">
+        {/* First Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image Section - Now always on the right */}
-          <div className="order-2 relative">
-            <div className="relative z-10">
-              <div className="relative w-full h-[300px] sm:h-[360px] md:h-[440px] lg:h-[600px] xl:h-[640px] rounded-lg overflow-hidden border-4 border-[#0A4223] shadow-2xl">
-                <Image
-                  src="/IMG3.webp"
-                  alt="Trading Expert"
-                  fill
-                  className="object-cover object-center"
-                />
-              </div>
-            </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#E6AF2E] rounded-full opacity-10"></div>
-            <div className="absolute -bottom-10 right-20 w-20 h-20 bg-[#0D2E5A] rounded-full opacity-20"></div>
-          </div>
-
-          {/* Text Section - Now always on the left */}
-          <div className="order-1">
+          {/* Text Section - First on mobile */}
+          <div className="order-1 lg:order-2">
             <Badge className="mb-3" variant="outline">
               About Us
             </Badge>
@@ -62,29 +43,28 @@ export function AboutSection() {
               across India.
             </p>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-20">
-          {/* Image Section */}
-          <div className="order-1 lg:order-1 relative">
+          {/* Image Section - Second on mobile */}
+          <div className="order-2 lg:order-1 relative">
             <div className="relative z-10">
               <div className="relative w-full h-[300px] sm:h-[360px] md:h-[440px] lg:h-[600px] xl:h-[640px] rounded-lg overflow-hidden border-4 border-[#0A4223] shadow-2xl">
                 <Image
-                  src="/IMG2.webp"
+                  src="/IMG3.webp"
                   alt="Trading Expert"
                   fill
                   className="object-cover object-center"
                 />
               </div>
             </div>
-
-            {/* Decorative Elements */}
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#E6AF2E] rounded-full opacity-10"></div>
             <div className="absolute -bottom-10 right-20 w-20 h-20 bg-[#0D2E5A] rounded-full opacity-20"></div>
           </div>
+        </div>
 
-          {/* Text Section */}
-          <div className="order-2 lg:order-2">
+        {/* Second Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-20">
+          {/* Text Section - First on mobile */}
+          <div className="order-1 lg:order-1">
             <h2 className="text-3xl md:text-3xl font-bold mb-6 mt-14">
               Building Markets: The Story Behind{" "}
               <span className="text-3xl font-bold text-yellow-600">
@@ -144,6 +124,22 @@ export function AboutSection() {
             <Button className="bg-[#0A4223] hover:bg-[#0D2E5A]">
               Learn Our Story
             </Button>
+          </div>
+
+          {/* Image Section - Second on mobile */}
+          <div className="order-2 lg:order-2 relative">
+            <div className="relative z-10">
+              <div className="relative w-full h-[300px] sm:h-[360px] md:h-[440px] lg:h-[600px] xl:h-[640px] rounded-lg overflow-hidden border-4 border-[#0A4223] shadow-2xl">
+                <Image
+                  src="/IMG2.webp"
+                  alt="Trading Expert"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-[#E6AF2E] rounded-full opacity-10"></div>
+            <div className="absolute -bottom-10 right-20 w-20 h-20 bg-[#0D2E5A] rounded-full opacity-20"></div>
           </div>
         </div>
       </div>

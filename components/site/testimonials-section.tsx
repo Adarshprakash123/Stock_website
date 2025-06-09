@@ -5,29 +5,32 @@ import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
-    id: 1,
-    name: "Karan",
-    role: "Full-time Trader",
-    content: "The technical analysis course completely transformed my trading approach. I went from struggling to identify profitable setups to consistently finding high-probability trades. Within three months, I was able to quit my day job and trade full-time.",
-    image: "/karan.webp",
-    rating: 5
-  },
+  id: 1,
+  name: "Karan",
+  role: "Full-time Trader",
+  content: " Sudhanshu Sir is one of the finest trading coaches, known for his highly accurate trade strategies. Thank you, Sir, for opening a class in our town, Sasaram!",
+  image: "/karan.webp",
+  rating: 5
+}
+,
   {
-    id: 2,
-    name: "Prateek",
-    role: "Part-time Investor",
-    content: "As a working professional, I needed something flexible that could fit my schedule. TradePro's courses were perfect - I could learn at my own pace and the strategies were easy to implement even with limited time. My portfolio has grown 32% since completing the program.",
-    image: "/prateek.webp",
-    rating: 5
-  },
+  id: 2,
+  name: "Prateek",
+  role: "Full-time Trader",
+  content: "I learned Forex trading from Sudhanshu Sir in July 2024. He provided me with a solid strategy and effective risk management formulas for trading. Thanks to Sudhanshu Sir and TradingWala Academy!",
+  image: "/prateek.webp",
+  rating: 5
+},
+
   {
-    id: 3,
-    name: "Shagun",
-    role: "Retired Finance Professional",
-    content: "After 30 years in finance, I thought I knew everything about the markets. TradePro's options course proved me wrong. Their innovative strategies have helped me generate consistent monthly income to supplement my retirement.",
-    image: "/shagun.webp",
-    rating: 4
-  }
+  id: 3,
+  name: "Shagun",
+  role: "Full-time Trader",
+  content: "After exploring many courses available in the market, TradingWala has offered the most valuable and reliable content, especially considering the price. It's a wholesome package that covers stock market concepts from basics to advanced levels. I no longer need to search for any other courses. All thanks to my mentor, Sudhanshu Sir — such a skilled and dedicated person. My recommendation is absolutely at the top!",
+  image: "/shagun.webp",
+  rating: 4
+}
+
 ]
 
 export function TestimonialsSection() {
