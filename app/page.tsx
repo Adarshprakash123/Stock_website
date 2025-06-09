@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/site/faq-section";
 import { ContactSection } from "@/components/site/contact-section";
 import { PopupForm } from "@/components/site/popup-form";
 import { MasterclassSection } from "@/components/site/masterclass-section";
+import FloatingContactButtons from "@/components/ui/FloatingContactButtons"
 
  
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <PopupForm />
+      <FloatingContactButtons/>
+      
     </main>
   );
 }
