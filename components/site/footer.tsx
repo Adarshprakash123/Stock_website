@@ -101,34 +101,35 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="#"
+                  href="/recorded_class"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Stock Market Basics
+                  Recorded Course
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="online_class"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Advanced Trading
+                  Online Live Class
+
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="offline_class"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Options Mastery
+                  Offline Master Class
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/blog"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  Technical Analysis
+                  Blog
                 </Link>
               </li>
             </ul>
