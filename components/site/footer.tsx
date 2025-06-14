@@ -16,34 +16,41 @@ export function Footer() {
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
+            <Link href={"/"}>
             <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
               Trading<span className="text-2xl font-bold text-yellow-600">Walla</span> 
             </h3>
+            </Link>
             <p className="text-gray-400 mb-6">
               Empowering traders with cutting-edge education and market insights
               since 2018.
             </p>
             <div className="flex space-x-4">
               <Link
-                href="#"
+                href="https://www.instagram.com/wallatrading?igsh=NnpqNDljNzJqaHd4&utm_source=qr"
+                target="blank"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://youtube.com/@wallatrading?si=EsbaL18RYb231pJy"
+                target="blank"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Twitter className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+                href="https://www.instagram.com/wallatrading?igsh=NnpqNDljNzJqaHd4&utm_source=qr"
+                target="blank"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </Link>
               <Link
-                href="#"
+
+                href="https://youtube.com/@wallatrading?si=EsbaL18RYb231pJy"
+                target="blank"
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <Youtube className="h-5 w-5" />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart2 } from "lucide-react";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -34,20 +35,24 @@ export function HeroSection() {
               leap. Ready to join them?
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button
+              <Link href={"/#courses"}>
+               <Button
                 size="lg"
                 className="bg-[#E6AF2E] hover:bg-[#D4A429] text-[#0A2342]"
               >
                 Explore Courses
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </Link>
+              <Link href={"/#masterclass"}>
               <Button
                 size="lg"
                 variant="outline"
                 className="text-black hover:text-white border-white hover:bg-white/10"
               >
-                Free Webinar
+                Join Webinar
               </Button>
+              </Link>
             </div>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">

@@ -67,9 +67,11 @@ export function Header() {
               {item.title}
             </Link>
           ))}
-          <Button size="sm" className="ml-4 bg-yellow-600">
-            Get Started
+          <Link href={"/#contact"}>
+          <Button size="sm" className="ml-4 bg-yellow-600 hover:bg-green-600">
+            Enquiry here
           </Button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
