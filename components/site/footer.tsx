@@ -109,7 +109,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="online_class"
+                  href="/online_class"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Online Live Class
@@ -118,7 +118,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="offline_class"
+                  href="/offline_class"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Offline Master Class
