@@ -153,16 +153,31 @@ export function Footer() {
             © {new Date().getFullYear()} TradingWalla. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <Link href="#" className="text-gray-500 hover:text-white text-sm">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-gray-500 hover:text-white text-sm">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-gray-500 hover:text-white text-sm">
-              Cookie Policy
-            </Link>
-          </div>
+  <a
+    href="/privacyPolicy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-500 hover:text-white text-sm"
+  >
+    Privacy Policy
+  </a>
+  <a
+    href="/terms"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-500 hover:text-white text-sm"
+  >
+    Terms of Service
+  </a>
+  <a
+    href="/cookie_policy"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-500 hover:text-white text-sm"
+  >
+    Cookie Policy
+  </a>
+</div>
         </div>
       </div>
     </footer>

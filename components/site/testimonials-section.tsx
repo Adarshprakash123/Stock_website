@@ -17,7 +17,7 @@ const testimonials = [
   id: 2,
   name: "Prateek",
   role: "Full-time Trader",
-  content: "I learned Forex trading from Sudhanshu Sir in July 2024. He provided me with a solid strategy and effective risk management formulas for trading. Thanks to Sudhanshu Sir and TradingWala Academy!",
+  content: "I learned Forex trading from Sudhanshu Sir in July 2024. He provided me with a solid strategy and effective risk management formulas for trading. Thanks to Sudhanshu Sir and TradingWalla Academy!",
   image: "/prateek.webp",
   rating: 5
 },

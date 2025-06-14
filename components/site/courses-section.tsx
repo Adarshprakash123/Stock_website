@@ -1,44 +1,64 @@
+"use client"
+
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Clock, CheckCircle, BookOpen, Users } from "lucide-react"
+import { ArrowRight, Clock, CheckCircle, Users } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Video } from 'lucide-react';
-
 
 const courses = [
   {
     id: 1,
     title: "Recorded Course Only",
-    // description: "Master the basics of stock market investing and build a solid foundation for your trading journey.",
+    link: "/recorded_class",
     image: "https://images.pexels.com/photos/6802042/pexels-photo-6802042.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     price: "Rs 5999",
     duration: "16 weeks",
     studentsCount: "1000",
     popular: true,
-    features: ["Pre-recorded Classes", "Live Trading Support (3 times/week, 12:00–2:00 PM)", " No Offline Access", "No Live Online Class Access"]
+    features: [
+      "Self-paced Video Learning (3 Months Access)",
+      "Includes: Equity, F&O, MCX, Currency, Crypto",
+      "💻 Live Trading Support: 3 days/week (Zoom, 12–2 PM)",
+      "🧠 Covers Intraday, Swing, Investment Strategies",
+      "🛑 No live classes, no certificate, no doubt support",
+      "Live Zoom Classes (Mon–Fri, 5:30–7:30 PM)"
+    ]
   },
   {
     id: 2,
     title: "Online Live Class",
-    // description: "Learn how to read charts, identify patterns and make profitable trading decisions based on technical indicators.",
+    link: "/online_class",
     image: "https://images.pexels.com/photos/6770609/pexels-photo-6770609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     price: "Rs 8999",
     duration: "Lifetime access",
     studentsCount: "1,800+",
     popular: false,
-    features: ["Live Online Classes (Monday to Friday, 5:30–7:30 PM)", "Live Trading Support (12:00–2:00 PM via Zoom, Lifetime access)", "Live Q&A & Doubt Sessions"]
+    features: [
+      "🕒 Live Zoom Classes (Mon–Fri, 5:30–7:30 PM)",
+      "📊 Covers: All Markets + Strategies + Psychology",
+      "Live Trading Support: 3 Days/Week (12:00 PM – 2:00 PM via Zoom) – Lifetime",
+      "📈 Live Trading Support: Lifetime (3 days/week, Zoom)",
+      "🎁 Includes community group, certificate & scholarship"
+    ]
   },
   {
     id: 3,
     title: "Offline Master Class",
-    // description: "Discover powerful options trading strategies to generate consistent income and manage risk effectively.",
+    link: "/offline_class",
     image: "https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     price: "Rs 19999",
     duration: "12 weeks",
     studentsCount: "1,200+",
     popular: true,
-    features: ["Offline Class (Monday to Friday, 5:30–7:30 PM)", "Includes Online Class Access", "Spread Trading", "Lifetime Access to Online Community Group"]
+    features: [
+      "🏫 Live Classroom Training at Sasaram",
+      "🕘 Includes Full-Day Live Trading (10:30 AM – 5 PM)",
+      "📚 Covers everything from Online Plan + In-person Mentorship",
+      "🧘♂️ Includes Strategy Practice, Meditation & Life Skills",
+      "🎓 Scholarship, Certificate & Lifetime Access"
+    ]
   }
 ]
 
@@ -53,7 +73,7 @@ export function CoursesSection() {
             Our comprehensive courses are designed to take you from beginner to expert with practical, actionable trading strategies.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {courses.map((course) => (
             <Card key={course.id} className="overflow-hidden transition-all duration-300 hover:shadow-lg border-0 shadow-md">
@@ -70,14 +90,12 @@ export function CoursesSection() {
                   </Badge>
                 )}
               </div>
-              
+
               <CardHeader className="pb-2">
                 <h3 className="text-xl font-bold">{course.title}</h3>
               </CardHeader>
-              
+
               <CardContent>
-                {/* <p className="text-gray-600 mb-4">{course.description}</p> */}
-                
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4 text-gray-500" />
@@ -88,7 +106,7 @@ export function CoursesSection() {
                     <span className="text-sm text-gray-600">{course.studentsCount} Students</span>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2 mb-4">
                   {course.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
@@ -98,18 +116,30 @@ export function CoursesSection() {
                   ))}
                 </div>
               </CardContent>
-              
-              <CardFooter className="flex items-center justify-between border-t pt-4">
+
+              <CardFooter className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t pt-4">
                 <span className="text-lg font-bold text-[#0A2342]">{course.price}</span>
-                <Button size="sm" className="bg-[#0A4223] hover:bg-[#b0b51e]">
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Link href={course.link} passHref>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="border-[#0A2342] text-[#0A2342] hover:bg-[#0A2342]/10"
+                    >
+                      View Full Details
+                    </Button>
+                  </Link>
+                  <Link href="/#contact" passHref>
+    <Button className="bg-[#0A2342] hover:bg-[#0A4223] text-white">
+      Buy Now
+    </Button>
+  </Link>
+                </div>
               </CardFooter>
             </Card>
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
           <Button variant="outline" size="lg" className="border-[#0A2342] text-[#0A2342]">
             View All Courses
