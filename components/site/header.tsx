@@ -102,7 +102,10 @@ export function Header() {
                 {item.title}
               </Link>
             ))}
-            <Button className="mt-2 text-white bg-green-500">Get Started</Button>
+            <Link href={"/#contact"}>
+            <Button className="mt-2 text-white bg-green-500">Enquiry here</Button>
+            </Link>
+            
           </nav>
         </div>
       )}

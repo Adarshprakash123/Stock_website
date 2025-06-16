@@ -23,26 +23,27 @@ const courses = [
       "💻 Live Trading Support: 3 days/week (Zoom, 12–2 PM)",
       "🧠 Covers Intraday, Swing, Investment Strategies",
       "🛑 No live classes, no certificate, no doubt support",
-      "Live Zoom Classes (Mon–Fri, 5:30–7:30 PM)"
+      
     ]
   },
   {
-    id: 2,
-    title: "Online Live Class",
-    link: "/online_class",
-    image: "https://images.pexels.com/photos/6770609/pexels-photo-6770609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    price: "Rs 8999",
-    duration: "Lifetime access",
-    studentsCount: "1,800+",
-    popular: false,
-    features: [
-      "🕒 Live Zoom Classes (Mon–Fri, 5:30–7:30 PM)",
-      "📊 Covers: All Markets + Strategies + Psychology",
-      "Live Trading Support: 3 Days/Week (12:00 PM – 2:00 PM via Zoom) – Lifetime",
-      "📈 Live Trading Support: Lifetime (3 days/week, Zoom)",
-      "🎁 Includes community group, certificate & scholarship"
-    ]
-  },
+  id: 2,
+  title: "Online Live Class",
+  link: "/online_class",
+  image: "https://images.pexels.com/photos/6770609/pexels-photo-6770609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  price: "Rs 8999",
+  duration: "Lifetime access",
+  studentsCount: "1,800+",
+  popular: false,
+  features: [
+    "🕒 Live Zoom Classes (Mon–Fri, 5:30–7:30 PM)",
+    "🎯 3 Months + Weekly Doubt Sessions",
+    "📊 Covers: All Markets + Strategies + Psychology",
+    "📈 Live Trading Support: Lifetime (3 days/week, Zoom)",
+    "🎁 Includes community group, certificate & scholarship"
+  ]
+},
+
   {
     id: 3,
     title: "Offline Master Class",

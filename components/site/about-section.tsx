@@ -121,7 +121,7 @@ export function AboutSection() {
               ))}
             </div>
 
-            <Button className="bg-[#0A4223] hover:bg-[#0D2E5A]">
+            <Button className="bg-[#0A4223] hover:bg-yellow-500 hover:text-black">
               Learn Our Story
             </Button>
           </div>

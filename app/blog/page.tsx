@@ -80,33 +80,37 @@ const blogs = [
 export default function BlogPage() {
   return (
     <>
-    <Header/>
-    <div className="min-h-screen bg-white pt-24 pb-16 text-gray-800 mt-24">
-      <div className="max-w-4xl mx-auto px-6">
-        <header className="text-center mb-14">
-          <Badge variant="outline" className="mb-4 text-sm">📘 Trending Stock Market Blogs (India)</Badge>
-          <h1 className="text-4xl font-bold">Ultimate Blog Guide for Indian Traders</h1>
-          <p className="mt-4 text-gray-600 text-base max-w-2xl mx-auto">
-            Deep-dive articles on stock market education, psychology, strategy, and tools for Indian traders & investors.
-          </p>
-        </header>
+      <Header />
+      <div className="min-h-screen bg-white pt-24 pb-16 text-gray-800 mt-24">
+        <div className="max-w-4xl mx-auto px-6">
+          <header className="text-center mb-14">
+            <Badge variant="outline" className="mb-4 text-sm">📘 Trending Stock Market Blogs (India)</Badge>
+            <h1 className="text-4xl font-bold">Ultimate Blog Guide for Indian Traders</h1>
+            <p className="mt-4 text-gray-600 text-base max-w-2xl mx-auto">
+              Deep-dive articles on stock market education, psychology, strategy, and tools for Indian traders & investors.
+            </p>
+          </header>
 
-        {/* Render Blog Articles */}
-        {blogs.map((blog, index) => (
-          <section key={index} className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-2">{blog.title}</h2>
-            <div className="flex flex-wrap items-center text-sm text-gray-500 mb-3 gap-3">
-              <Badge variant="secondary">{blog.tag}</Badge>
-              <span>{blog.date}</span>
-            </div>
-            <p className="text-base font-medium text-gray-700 mb-2">{blog.intro}</p>
-            <p className="text-base leading-relaxed text-gray-800">{blog.content}</p>
-            <hr className="my-8 border-gray-200" />
-          </section>
-        ))}
+          {blogs.map((blog, index) => (
+            <section key={index} className="mb-16 border-b border-gray-200 pb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold mb-3">{blog.title}</h2>
+              <div className="flex flex-wrap items-center text-sm text-gray-500 gap-3 mb-2">
+                <Badge variant="secondary">{blog.tag}</Badge>
+                <span>{blog.date}</span>
+              </div>
+              <div className="mb-4">
+                <strong>Intro:</strong>
+                <p className="text-gray-700">{blog.intro}</p>
+              </div>
+              <div>
+                <strong>Full Content:</strong>
+                <p className="text-gray-800 leading-relaxed">{blog.content}</p>
+              </div>
+            </section>
+          ))}
+        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 }
