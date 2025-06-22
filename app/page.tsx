@@ -8,6 +8,7 @@ import { FaqSection } from "@/components/site/faq-section";
 import { ContactSection } from "@/components/site/contact-section";
 import { PopupForm } from "@/components/site/popup-form";
 import { MasterclassSection } from "@/components/site/masterclass-section";
+import { PaymentSuccessMessage } from "@/components/PaymentSuccessMessage";
 import FloatingContactButtons from "@/components/ui/FloatingContactButtons"
 
  
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header />
+      <PaymentSuccessMessage />
       <HeroSection />
       <CoursesSection />
       <AboutSection />

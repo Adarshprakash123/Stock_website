@@ -25,7 +25,11 @@ export function MasterclassSection() {
 
     try {
       // First save the registration data
-      const formResponse = await fetch("/api/forms", {
+      // Use environment variable for backend URL
+      const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+      
+      // Save registration data
+      const formResponse = await fetch(`${BACKEND_URL}/api/forms`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,12 +47,19 @@ export function MasterclassSection() {
       }
 
       // Create payment session
-      const paymentResponse = await fetch("/api/create-payment", {
+      const paymentResponse = await fetch(`${BACKEND_URL}/api/payment/create-payment-session`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          whatsapp: formData.whatsapp,
+          amount: "1",
+          formType: "masterclass"
+        })
       });
 
       const paymentData = await paymentResponse.json();
@@ -57,10 +68,49 @@ export function MasterclassSection() {
         throw new Error("Failed to create payment session");
       }
 
+      // Update success callback URL to use API path
+      paymentData.data.surl = `${BACKEND_URL}/api/payment/success`;
+      paymentData.data.furl = `${BACKEND_URL}/api/payment/failure`;
+
       // Create and submit PayU form
       const form = document.createElement("form");
       form.method = "POST";
-      form.action = paymentData.payuUrl;
+      form.action = `${paymentData.data.payuUrl}/_payment`;
+      form.target = "_self"; // Make sure it opens in the same tab
+
+      // Add all PayU data as hidden inputs
+      Object.entries(paymentData.data).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value as string;
+        form.appendChild(input);
+      });
+
+      // Add form to document and submit
+      document.body.appendChild(form);
+      form.submit();
+
+      // Clear form data after submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        whatsapp: ""
+      });
+
+      // Show success message
+      alert("Payment process initiated. Please complete the payment on the next screen.");
+
+      // Log the payment data for debugging
+      console.log("Payment data:", paymentData);
+
+      // Prevent multiple submissions
+      const submitButton = document.querySelector('button[type="submit"]') as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "Processing...";
+      }
 
       // Add all PayU data as hidden inputs
       Object.entries(paymentData.payuData).forEach(([key, value]) => {
