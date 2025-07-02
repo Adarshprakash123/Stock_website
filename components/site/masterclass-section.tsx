@@ -26,10 +26,10 @@ export function MasterclassSection() {
     try {
       // First save the registration data
       // Use environment variable for backend URL
-      const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+      // const BACKEND_URL = "https://stock-website-backend-3.onrender.com" || "http://localhost:5000";
       
       // Save registration data
-      const formResponse = await fetch(`${BACKEND_URL}/api/forms`, {
+      const formResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'https://stock-website-backend-3.onrender.com'}/api/forms`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export function MasterclassSection() {
       }
 
       // Create payment session
-      const paymentResponse = await fetch(`${BACKEND_URL}/api/payment/create-payment-session`, {
+      const paymentResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'https://stock-website-backend-3.onrender.com'}/api/payment/create-payment-session`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export function MasterclassSection() {
           email: formData.email,
           phone: formData.phone,
           whatsapp: formData.whatsapp,
-          amount: "1",
+          amount: "49",
           formType: "masterclass"
         })
       });
@@ -69,14 +69,45 @@ export function MasterclassSection() {
       }
 
       // Update success callback URL to use API path
-      paymentData.data.surl = `${BACKEND_URL}/api/payment/success`;
-      paymentData.data.furl = `${BACKEND_URL}/api/payment/failure`;
+      paymentData.data.surl = `${process.env.NEXT_PUBLIC_BACKEND_URL || 'https://stock-website-backend-3.onrender.com'}/api/payment/success`;
+      paymentData.data.furl = `${process.env.NEXT_PUBLIC_BACKEND_URL || 'https://stock-website-backend-3.onrender.com'}/api/payment/failure`;
 
       // Create and submit PayU form
       const form = document.createElement("form");
       form.method = "POST";
-      form.action = `${paymentData.data.payuUrl}/_payment`;
+      form.action = `${paymentData.data.payuUrl}`;
       form.target = "_self"; // Make sure it opens in the same tab
+      form.enctype = "application/x-www-form-urlencoded"; // Ensure proper encoding
+      
+      // Add all required PayU fields
+      const payuFields = {
+        key: paymentData.data.key,
+        txnid: paymentData.data.txnid,
+        amount: paymentData.data.amount,
+        productinfo: paymentData.data.productinfo,
+        firstname: paymentData.data.firstname,
+        email: paymentData.data.email,
+        phone: paymentData.data.phone,
+        surl: paymentData.data.surl,
+        furl: paymentData.data.furl,
+        service_provider: "payu_paisa",
+        hash: paymentData.data.hash,
+        udf1: "",
+        udf2: "",
+        udf3: "",
+        udf4: "",
+        udf5: "",
+        curl: paymentData.data.curl || ""
+      };
+
+      // Add all fields to form
+      Object.entries(payuFields).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      });
 
       // Add all PayU data as hidden inputs
       Object.entries(paymentData.data).forEach(([key, value]) => {
@@ -99,12 +130,6 @@ export function MasterclassSection() {
         whatsapp: ""
       });
 
-      // Show success message
-      alert("Payment process initiated. Please complete the payment on the next screen.");
-
-      // Log the payment data for debugging
-      console.log("Payment data:", paymentData);
-
       // Prevent multiple submissions
       const submitButton = document.querySelector('button[type="submit"]') as HTMLButtonElement;
       if (submitButton) {
@@ -112,13 +137,18 @@ export function MasterclassSection() {
         submitButton.textContent = "Processing...";
       }
 
-      // Add all PayU data as hidden inputs
-      Object.entries(paymentData.payuData).forEach(([key, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = value as string;
-        form.appendChild(input);
+      // Log the payment data for debugging
+      console.log("Payment data:", paymentData);
+
+      // Show a neutral message
+      alert("Payment process initiated. Please complete the payment on the next screen.");
+
+      // Clear form data after submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        whatsapp: ""
       });
 
       // Add form to document and submit
@@ -126,7 +156,7 @@ export function MasterclassSection() {
       form.submit();
     } catch (error) {
       console.error("Error:", error);
-      // You might want to show an error message to the user here
+      alert("An error occurred. Please try again.");
     }
   };
 

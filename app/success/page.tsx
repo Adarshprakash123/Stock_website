@@ -25,6 +25,9 @@ export default function SuccessPage() {
     // Here you could verify the payment status with your backend
     // For now, we'll just show success if we have the required parameters
     setStatus("success");
+    setTimeout(() => {
+      window.location.href = "https://chat.whatsapp.com/BWKfMIOaRpkGSshH7F9F7N";
+    }, 2000); // 2 seconds delay so user sees the success message
   }, [searchParams]);
 
   return (

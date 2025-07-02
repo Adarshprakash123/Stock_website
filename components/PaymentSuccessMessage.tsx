@@ -2,46 +2,53 @@
 
 import { useEffect, useState } from "react";
 import { Alert } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle } from "lucide-react";
 
 export function PaymentSuccessMessage() {
-  const [paymentStatus, setPaymentStatus] = useState<string | null>(null);
-  const [txnid, setTxnId] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [showMessage, setShowMessage] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const status = params.get("payment_status");
-    const id = params.get("txnid");
     
-    setPaymentStatus(status);
-    setTxnId(id);
-
-    // Clear the URL parameters after 3 seconds
-    if (status) {
-      setTimeout(() => {
-        const newUrl = window.location.pathname;
-        window.history.replaceState({}, document.title, newUrl);
-      }, 3000);
+    // Show message based on payment status
+    if (status === "success") {
+      setShowMessage(true);
+      setMessage("You will be redirected to our WhatsApp group!");
+    } else if (status === "failed") {
+      setShowMessage(true);
+      setMessage("Payment failed. Please try again.");
     }
   }, []);
 
-  if (!paymentStatus) return null;
+  // Clear message after 1 second
+  useEffect(() => {
+    if (showMessage) {
+      const timer = setTimeout(() => {
+        setMessage(null);
+        setShowMessage(false);
+        // Clear URL parameters
+        const newUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, newUrl);
+      }, 1000);
+
+      // Cleanup timeout if component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, [showMessage]);
+
+  if (!showMessage || !message) return null;
 
   return (
     <Alert
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-96"
-      variant="default"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-96 bg-blue-50 border-blue-200 text-blue-700"
     >
-      <AlertCircle className="h-4 w-4" />
+      <CheckCircle className="h-4 w-4 text-blue-500" />
       <div className="flex items-center gap-2">
         <span className="font-medium">
-          Payment {paymentStatus === "success" ? "Successful" : "Failed"}
+          {message}
         </span>
-        {txnid && (
-          <span className="text-sm text-gray-600">
-            (TXN: {txnid.substring(0, 8)}...)
-          </span>
-        )}
       </div>
     </Alert>
   );
